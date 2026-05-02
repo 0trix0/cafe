@@ -743,7 +743,26 @@ footer {
 
 <script>
 window.history.scrollRestoration = 'manual';
-window.scrollTo(0, 0);
+
+const scrollToHero = () => {
+  window.scrollTo(0, 0);
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+  if (window.location.hash) {
+    history.replaceState(null, '', window.location.pathname + window.location.search);
+  }
+};
+
+window.addEventListener('load', () => {
+  scrollToHero();
+  setTimeout(scrollToHero, 50);
+});
+
+window.addEventListener('pageshow', event => {
+  if (event.persisted) {
+    scrollToHero();
+  }
+});
 
 const faders = document.querySelectorAll('.fade');
 
