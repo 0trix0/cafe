@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>People.</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #f5f2ee;
+  color: #1e1e1e;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 50px;
+  z-index: 100;
+  background: rgba(245, 242, 238, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+nav img {
+  width: 40px;
+  height: auto;
+}
+
+nav h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 0;
+}
+
+nav a {
+  margin-left: 25px;
+  text-decoration: none;
+  color: #1e1e1e;
+  font-size: 0.9rem;
+  transition: opacity 0.3s;
+}
+
+nav a:hover {
+  color: #55682b;
+  opacity: 1;
+}
+
+/* HERO BANNER */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 80px;
+  position: relative;
+}
+
+.hero h1 {
+  font-family: 'Hess', serif;
+  font-size: 5rem;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  max-width: 800px;
+}
+
+.hero-title {
+  display: inline-grid;
+  text-align: left;
+}
+
+.hero-title span {
+  display: block;
+  font-weight: 100;
+}
+
+.hero-title .line1 {
+  justify-self: center;
+}
+
+.hero-title .line2 {
+  justify-self: end;
+}
+
+.hero p {
+  max-width: 500px;
+  opacity: 0.7;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+.hero a {
+  padding: 12px 30px;
+  border: 1px solid #1e1e1e;
+  border-radius: 30px;
+  background: transparent;
+  color: #1e1e1e;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-block;
+}
+
+.hero a:hover {
+  background: #55682b;
+  color: #f5f2ee;
+  border-color: #55682b;
+}
+
+.hero img {
+  margin-top: 60px;
+  opacity: 0.5;
+}
+
+/* SECTIONS */
+.section-container {
+  padding: 120px 80px;
+}
+
+.section-header {
+  max-width: 600px;
+  margin-bottom: 80px;
+}
+
+.section-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.section-header h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: #55682b;
+}
+
+.section-header p {
+  opacity: 0.7;
+  font-size: 1.1rem;
+}
+
+/* CARDS GRID */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.card {
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 25px;
+  transition: transform 0.5s;
+}
+
+.card:hover img {
+  transform: scale(1.05);
+}
+
+.card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+}
+
+.card p {
+  opacity: 0.7;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* STATS SECTION */
+.stats-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  margin-top: 60px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 60px;
+}
+
+.stat-item {
+  text-align: left;
+}
+
+.stat-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.stat-label {
+  opacity: 0.6;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.stats-image {
+  width: 100%;
+  border-radius: 15px;
+}
+
+/* MENU SECTION */
+.menu-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px 80px;
+  margin-top: 60px;
+}
+
+.menu-category {
+  margin-bottom: 40px;
+}
+
+.menu-category h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #55682b;
+  padding-bottom: 12px;
+}
+
+.menu-item {
+  margin-bottom: 25px;
+}
+
+.menu-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+
+.menu-item-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.menu-item-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: #7a9b76;
+}
+
+.menu-item-description {
+  opacity: 0.65;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* CONTACT SECTION */
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  margin-top: 60px;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.info-label {
+  opacity: 0.6;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.info-content {
+  font-size: 1rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  opacity: 0.7;
+  font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 12px 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  background: white;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #1e1e1e;
+}
+
+.submit-btn {
+  padding: 12px 30px;
+  background: #1e1e1e;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.3s;
+  align-self: flex-start;
+}
+
+.submit-btn:hover {
+  background: #55682b;
+}
+
+/* FOOTER */
+footer {
+  background: #1e1e1e;
+  color: white;
+  padding: 80px;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 60px;
+  margin-bottom: 80px;
+}
+
+.footer-section h4 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  opacity: 0.9;
+}
+
+.footer-section p {
+  opacity: 0.7;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.footer-section ul {
+  list-style: none;
+}
+
+.footer-section ul li {
+  margin-bottom: 12px;
+}
+
+.footer-section a {
+  color: white;
+  text-decoration: none;
+  opacity: 0.7;
+  font-size: 0.9rem;
+  transition: opacity 0.3s;
+}
+
+.footer-section a:hover {
+  opacity: 1;
+}
+
+.footer-divider {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 40px;
+  text-align: center;
+  opacity: 0.7;
+  font-size: 0.85rem;
+}
+
+/* ANIMATION */
+.fade {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 1s;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@font-face {
+  font-family: "Hess";
+  src: url(fonnts.com-Hess_Gothic_Round_NF_W01_Rg.ttf);
+}
+
+/* MOBILE */
+@media(max-width: 900px) {
+  nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 18px 24px;
+  }
+
+  nav ul {
+    width: auto;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  nav a {
+    margin-left: 15px;
+  }
+
+  .hero {
+    padding-top: 60px;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .section-container {
+    padding: 60px 30px;
+  }
+
+  .section-header h2 {
+    font-size: 2rem;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .menu-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .contact-container {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <img src="logo.png" alt="PPL Cafe Logo" style="width: 40px; height: auto;">
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#team">Menu</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="home">
+  <h1 class="fade hero-title">
+    <span class="line1">From People</span>
+    <span class="line2">to People.</span>
+  </h1>
+  <p class="fade">Coffee, conversation, and everything in between—where time slows and moments quietly stay.</p>
+  <a href="#team" class="fade">Explore Menu</a>
+</section>
+
+<section class="section-container" id="team">
+  <div class="section-header">
+    <h2 class="fade">Our Signature Menu</h2>
+    <p class="fade">Carefully crafted beverages and pastries for every palate.</p>
+  </div>
+  <div class="menu-grid">
+    <div>
+      <div class="menu-category">
+        <h3 class="fade">Espresso Drinks</h3>
+        <div class="menu-item fade">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Single Espresso</span>
+            <span class="menu-item-price">$3.50</span>
+          </div>
+          <p class="menu-item-description">A bold, concentrated shot of single-origin arabica.</p>
+        </div>
+        <div class="menu-item fade">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Cappuccino</span>
+            <span class="menu-item-price">$5.00</span>
+          </div>
+          <p class="menu-item-description">Espresso combined with steamed milk and velvety foam.</p>
+        </div>
+        <div class="menu-item fade">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Latte</span>
+            <span class="menu-item-price">$5.50</span>
+          </div>
+          <p class="menu-item-description">Smooth espresso with silky steamed milk, light on the foam.</p>
+        </div>
+        <div class="menu-item fade">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Macchiato</span>
+            <span class="menu-item-price">$4.50</span>
+          </div>
+          <p class="menu-item-description">Espresso "marked" with just a touch of foam.</p>
+        </div>
+      </div>
+      <div class="menu-category">
+        <h3 class="fade">Cold Beverages</h3>
+        <div class="menu-item fade">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Iced Americano</span>
+            <span class="menu-item-price">$4.00</span>
+          </div>
+          <p class="menu-item-description">Double shot espresso over ice with cool, pure water.</p>
+        </div>
+        <div class="menu-item fade">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Cold Brew</span>
+            <span class="menu-item-price">$4.50</span>
+          </div>
+          <p class="menu-item-description">Smooth, mellow cold-steeped coffee served over ice.</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="menu-category">
+        <h3 class="fade">Specialty Drinks</h3>
+        <div class="menu-item fade">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Cortado</span>
+            <span class="menu-item-price">$4.75</span>
+          </div>
+          <p class="menu-item-description">Balanced blend of espresso and steamed milk in equal parts.</p>
+        </div>
+        <div class="menu-item fade">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Flat White</span>
+            <span class="menu-item-price">$5.50</span>
+          </div>
+          <p class="menu-item-description">Espresso with perfectly microfoamed milk for a velvety texture.</p>
+        </div>
+        <div class="menu-item fade">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Mocha</span>
+            <span class="menu-item-price">$5.75</span>
+          </div>
+          <p class="menu-item-description">Rich chocolate blended with espresso and steamed milk.</p>
+        </div>
+      </div>
+      <div class="menu-category">
+        <h3 class="fade">Pastries & Bites</h3>
+        <div class="menu-item fade">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Croissant</span>
+            <span class="menu-item-price">$4.50</span>
+          </div>
+          <p class="menu-item-description">Butter-laminated French pastry, flaky and golden.</p>
+        </div>
+        <div class="menu-item fade">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Almond Biscotti</span>
+            <span class="menu-item-price">$3.50</span>
+          </div>
+          <p class="menu-item-description">Twice-baked Italian almond cookies, perfect with espresso.</p>
+        </div>
+        <div class="menu-item fade">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Chocolate Tart</span>
+            <span class="menu-item-price">$5.50</span>
+          </div>
+          <p class="menu-item-description">Silky dark chocolate filling in a delicate pastry shell.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-container" id="contact">
+  <div class="section-header">
+    <h2 class="fade">Join the Movement</h2>
+    <p class="fade">Get in touch with us for inquiries, collaborations, or just to say hello.</p>
+  </div>
+  <div class="contact-container">
+    <div class="contact-info">
+      <div class="info-item fade">
+        <div class="info-label">Email</div>
+        <div class="info-content">hello@pplcafe.com</div>
+      </div>
+      <div class="info-item fade">
+        <div class="info-label">Phone</div>
+        <div class="info-content">+1 (555) 123-4567</div>
+      </div>
+      <div class="info-item fade">
+        <div class="info-label">Location</div>
+        <div class="info-content">123 Coffee Street, Urban District</div>
+      </div>
+    </div>
+    <form class="contact-form">
+      <div class="form-group fade">
+        <label>Name</label>
+        <input type="text" name="name" required>
+      </div>
+      <div class="form-group fade">
+        <label>Email</label>
+        <input type="email" name="email" required>
+      </div>
+      <div class="form-group fade">
+        <label>Subject</label>
+        <input type="text" name="subject" required>
+      </div>
+      <div class="form-group fade">
+        <label>Message</label>
+        <textarea name="message" required></textarea>
+      </div>
+      <button type="submit" class="submit-btn fade">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-section">
+      <h4>PPL Cafe</h4>
+      <p>A space for people & coffee — where design meets comfort, and every moment is intentional.</p>
+      <p><strong>Est. 2024</strong></p>
+    </div>
+    <div class="footer-section">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#team">Menu</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="#">Coffee Guide</a></li>
+        <li><a href="#">Brewing Tips</a></li>
+        <li><a href="#">Bean Stories</a></li>
+        <li><a href="#">Events</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Sustainability</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-divider">
+    © 2026 PPL Cafe. All Rights Reserved.
+  </div>
+</footer>
+
+<script>
+window.scrollTo(0, 0);
+
+const faders = document.querySelectorAll('.fade');
+
+const revealFaders = () => {
+  faders.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
+      el.classList.add('show');
+    }
+  });
+};
+
+window.addEventListener('scroll', revealFaders);
+revealFaders();
+</script>
+
+</body>
+</html>
