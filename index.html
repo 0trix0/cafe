@@ -748,20 +748,53 @@ const scrollToHero = () => {
   window.scrollTo(0, 0);
   document.documentElement.scrollTop = 0;
   document.body.scrollTop = 0;
+};
+
+const clearHash = () => {
   if (window.location.hash) {
     history.replaceState(null, '', window.location.pathname + window.location.search);
   }
 };
 
+const navLinks = document.querySelectorAll('nav a[href^="#"]');
+navLinks.forEach(link => {
+  link.addEventListener('click', event => {
+    const targetId = link.getAttribute('href');
+    if (targetId === '#home') {
+      event.preventDefault();
+      scrollToHero();
+      clearHash();
+      return;
+    }
+
+    const targetEl = document.querySelector(targetId);
+    if (targetEl) {
+      event.preventDefault();
+      targetEl.scrollIntoView({ behavior: 'smooth' });
+      clearHash();
+    }
+  });
+});
+
 window.addEventListener('load', () => {
   scrollToHero();
-  setTimeout(scrollToHero, 50);
+  clearHash();
+  setTimeout(() => {
+    scrollToHero();
+    clearHash();
+  }, 50);
 });
 
 window.addEventListener('pageshow', event => {
   if (event.persisted) {
     scrollToHero();
+    clearHash();
   }
+});
+
+window.addEventListener('beforeunload', () => {
+  scrollToHero();
+  clearHash();
 });
 
 const faders = document.querySelectorAll('.fade');
