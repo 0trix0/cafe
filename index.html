@@ -27,6 +27,56 @@ body {
   overflow-x: hidden;
 }
 
+body.loading {
+  overflow: hidden;
+}
+
+body.loading nav,
+body.loading a,
+body.loading button {
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.5;
+}
+
+#loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f2ee;
+  color: #1e1e1e;
+  font-family: 'Inter', sans-serif;
+  transition: opacity 0.3s ease;
+}
+
+#loading-screen.loaded {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#loading-screen .loading-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+#loading-screen .loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid rgba(30, 30, 30, 0.2);
+  border-top-color: #1e1e1e;
+  border-radius: 50%;
+  animation: spinner 1s linear infinite;
+}
+
+@keyframes spinner {
+  to { transform: rotate(360deg); }
+}
+
 /* NAV */
 nav {
   position: fixed;
@@ -548,7 +598,14 @@ footer {
 </style>
 </head>
 
-<body>
+<body class="loading">
+
+<div id="loading-screen" aria-live="polite" aria-label="Loading website">
+  <div class="loading-inner">
+    <div class="loader"></div>
+    <p>Loading...</p>
+  </div>
+</div>
 
 <nav>
   <a href="#home" class="logo-link"><img src="logo.png" alt="PPL Cafe Logo"></a>
@@ -910,15 +967,6 @@ if (exploreMenuLink) {
   });
 }
 
-window.addEventListener('load', () => {
-  scrollToHero();
-  clearHash();
-  setTimeout(() => {
-    scrollToHero();
-    clearHash();
-  }, 50);
-});
-
 window.addEventListener('pageshow', event => {
   if (event.persisted) {
     scrollToHero();
@@ -929,6 +977,27 @@ window.addEventListener('pageshow', event => {
 window.addEventListener('beforeunload', () => {
   scrollToHero();
   clearHash();
+});
+
+const loadingScreen = document.getElementById('loading-screen');
+const hideLoadingScreen = () => {
+  document.body.classList.remove('loading');
+  if (loadingScreen) {
+    loadingScreen.classList.add('loaded');
+    setTimeout(() => {
+      loadingScreen.style.display = 'none';
+    }, 300);
+  }
+};
+
+window.addEventListener('load', () => {
+  hideLoadingScreen();
+  scrollToHero();
+  clearHash();
+  setTimeout(() => {
+    scrollToHero();
+    clearHash();
+  }, 50);
 });
 
 const faders = document.querySelectorAll('.fade');
