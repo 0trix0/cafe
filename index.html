@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- code by Nabil Joudeh -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -259,13 +260,45 @@ nav a:hover {
 /* MENU SECTION */
 .menu-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 60px 80px;
   margin-top: 60px;
 }
 
 .menu-category {
   margin-bottom: 40px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 40px;
+}
+
+.menu-category:last-child {
+  border-bottom: none;
+}
+
+.sub-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.side-by-side {
+  display: flex;
+  gap: 40px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 40px;
+  margin-bottom: 40px;
+}
+
+.side-by-side .menu-category {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  flex: 1;
+}
+
+.side-by-side .menu-category:first-child {
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  padding-right: 40px;
 }
 
 .menu-category h3 {
@@ -277,7 +310,7 @@ nav a:hover {
 }
 
 .menu-item {
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .menu-item-header {
@@ -295,8 +328,9 @@ nav a:hover {
 
 .menu-item-price {
   font-family: 'Playfair Display', serif;
-  font-size: 1rem;
-  color: #7a9b76;
+  font-size: 1.2rem;
+  color: #000000;
+  position: relative;
 }
 
 .menu-item-description {
@@ -305,10 +339,23 @@ nav a:hover {
   line-height: 1.5;
 }
 
+.menu-item-addition {
+  margin: 0.35rem 0 0 1rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.menu-item-options {
+  margin: 0.2rem 0 0 1rem;
+  font-size: 0.9rem;
+  opacity: 0.7;
+  letter-spacing: 0.02em;
+}
+
 /* CONTACT SECTION */
 .contact-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.5fr;
   gap: 80px;
   margin-top: 60px;
 }
@@ -316,7 +363,8 @@ nav a:hover {
 .contact-info {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 30px;
+  margin-top: 80px;
 }
 
 .info-item {
@@ -336,98 +384,55 @@ nav a:hover {
   font-size: 1rem;
 }
 
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+.map-frame {
+  width: 100%;
+  min-height: 460px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.08);
 }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.form-group label {
-  opacity: 0.7;
-  font-size: 0.9rem;
-}
-
-.form-group input,
-.form-group textarea {
-  padding: 12px 16px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.95rem;
-  background: white;
-}
-
-.form-group textarea {
-  resize: vertical;
-  min-height: 120px;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: #1e1e1e;
-}
-
-.submit-btn {
-  padding: 12px 30px;
-  background: #1e1e1e;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 0.95rem;
-  cursor: pointer;
-  transition: background 0.3s;
-  align-self: flex-start;
-}
-
-.submit-btn:hover {
-  background: #55682b;
+.map-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
 /* FOOTER */
 footer {
   background: #1e1e1e;
   color: white;
-  padding: 80px;
+  padding: 20px 40px;
 }
 
 .footer-content {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 60px;
-  margin-bottom: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-.footer-section h4 {
+.footer-content h4 {
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-bottom: 20px;
   opacity: 0.9;
+  margin: 0;
 }
 
-.footer-section p {
-  opacity: 0.7;
-  font-size: 0.9rem;
-  line-height: 1.6;
-  margin-bottom: 12px;
-}
-
-.footer-section ul {
+.footer-content ul {
+  display: flex;
   list-style: none;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
 }
 
-.footer-section ul li {
-  margin-bottom: 12px;
+.footer-content ul li {
+  margin: 0;
 }
 
-.footer-section a {
+.footer-content a {
   color: white;
   text-decoration: none;
   opacity: 0.7;
@@ -435,7 +440,7 @@ footer {
   transition: opacity 0.3s;
 }
 
-.footer-section a:hover {
+.footer-content a:hover {
   opacity: 1;
 }
 
@@ -502,6 +507,14 @@ footer {
     font-size: 2rem;
   }
 
+  .section-header {
+    margin-bottom: 30px;
+  }
+
+  .section-header h2 {
+    margin-bottom: 20px;
+  }
+
   .cards-grid {
     grid-template-columns: 1fr;
   }
@@ -522,11 +535,14 @@ footer {
 
   .contact-container {
     grid-template-columns: 1fr;
+    margin-top: -50px;
+    gap: 30px;
   }
 
   .footer-content {
-    grid-template-columns: 1fr;
-    gap: 40px;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
   }
 }
 </style>
@@ -539,7 +555,7 @@ footer {
   <ul>
     <li><a href="#home">Home</a></li>
     <li><a href="#team">Menu</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#location">Location</a></li>
   </ul>
 </nav>
 
@@ -560,181 +576,286 @@ footer {
   <div class="menu-grid">
     <div>
       <div class="menu-category">
-        <h3 class="fade">Espresso Drinks</h3>
+        <h3 class="fade">Breakfast</h3>
         <div class="menu-item fade">
           <div class="menu-item-header">
-            <span class="menu-item-name">Single Espresso</span>
-            <span class="menu-item-price">$3.50</span>
+            <span class="menu-item-name">Omlette</span>
+            <span class="menu-item-price">45</span>
           </div>
-          <p class="menu-item-description">A bold, concentrated shot of single-origin arabica.</p>
+          <p class="menu-item-description">Vegetable | Cheese</p>
         </div>
         <div class="menu-item fade">
           <div class="menu-item-header">
-            <span class="menu-item-name">Cappuccino</span>
-            <span class="menu-item-price">$5.00</span>
+            <span class="menu-item-name">Avocado Toast</span>
+            <span class="menu-item-price">48</span>
           </div>
-          <p class="menu-item-description">Espresso combined with steamed milk and velvety foam.</p>
+          <p class="menu-item-description">Poached Egg | Scrambled Eggs</p>
         </div>
         <div class="menu-item fade">
           <div class="menu-item-header">
-            <span class="menu-item-name">Latte</span>
-            <span class="menu-item-price">$5.50</span>
+            <span class="menu-item-name">Eggs Benedict</span>
+            <span class="menu-item-price">48</span>
           </div>
-          <p class="menu-item-description">Smooth espresso with silky steamed milk, light on the foam.</p>
         </div>
-        <div class="menu-item fade">
+          <div class="menu-item fade">
           <div class="menu-item-header">
-            <span class="menu-item-name">Macchiato</span>
-            <span class="menu-item-price">$4.50</span>
+            <span class="menu-item-name">Turkish Eggs</span>
+            <span class="menu-item-price">45</span>
           </div>
-          <p class="menu-item-description">Espresso "marked" with just a touch of foam.</p>
+        </div>
+          <div class="menu-item fade">
+          <div class="menu-item-header">
+            <span class="menu-item-name">French Toast Classic</span>
+            <span class="menu-item-price">38</span>
+          </div>
+          <p class="menu-item-addition">Add ons:</p>
+          <p class="menu-item-options">Nutella  |  Pistachio  |  Biscoff</p>
+        </div>
+          <div class="menu-item fade">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Acai Bowl</span>
+            <span class="menu-item-price">35</span>
+          </div>
+        </div>
+      </div>
+      <div class="side-by-side">
+        <div class="menu-category">
+          <h3 class="fade">Croissants</h3>
+          <div class="menu-item fade">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Plain</span>
+              <span class="menu-item-price">15.50</span>
+            </div>
+          </div>
+          <div class="menu-item fade">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Almond</span>
+              <span class="menu-item-price">15.50</span>
+            </div>
+          </div>
+          <div class="menu-item fade">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Cheese</span>
+              <span class="menu-item-price">15.50</span>
+            </div>
+          </div>
+            <div class="menu-item fade">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Chocolate</span>
+              <span class="menu-item-price">15.50</span>
+            </div>
+          </div>
+        </div>
+        <div class="menu-category">
+          <h3 class="fade">Sandwiches</h3>
+          <div class="menu-item fade">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Italian Turkey</span>
+              <span class="menu-item-price">42</span>
+            </div>
+          </div>
+          <div class="menu-item fade">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Philly Beef Pastrami</span>
+              <span class="menu-item-price">45</span>
+            </div>
+          </div>
+          <div class="menu-item fade">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Tuna Pestocado</span>
+              <span class="menu-item-price">45</span>
+            </div>
+          </div>
         </div>
       </div>
       <div class="menu-category">
-        <h3 class="fade">Cold Beverages</h3>
+        <h3 class="fade">JARS</h3>
         <div class="menu-item fade">
           <div class="menu-item-header">
-            <span class="menu-item-name">Iced Americano</span>
-            <span class="menu-item-price">$4.00</span>
+            <span class="menu-item-name">Overnight Oats</span>
+            <span class="menu-item-price">35</span>
           </div>
-          <p class="menu-item-description">Double shot espresso over ice with cool, pure water.</p>
         </div>
         <div class="menu-item fade">
           <div class="menu-item-header">
-            <span class="menu-item-name">Cold Brew</span>
-            <span class="menu-item-price">$4.50</span>
+            <span class="menu-item-name">Granola Greek Yogurt</span>
+            <span class="menu-item-price">38</span>
           </div>
-          <p class="menu-item-description">Smooth, mellow cold-steeped coffee served over ice.</p>
+        </div>
+        <div class="menu-item fade">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Blueberry Cheesecake</span>
+            <span class="menu-item-price">42</span>
+          </div>
+        </div>
+        <div class="menu-item fade">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Banana Biscoff pudding</span>
+            <span class="menu-item-price">38</span>
+          </div>
         </div>
       </div>
-    </div>
-    <div>
       <div class="menu-category">
-        <h3 class="fade">Specialty Drinks</h3>
+        <h3 class="fade">COFFEE</h3>
         <div class="menu-item fade">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Espresso</span>
+            <span class="menu-item-price">16</span>
+          </div>
+        </div>
+          <div class="menu-item fade">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Picollo</span>
+            <span class="menu-item-price">21</span>
+          </div>
+        </div>
+          <div class="menu-item fade">
           <div class="menu-item-header">
             <span class="menu-item-name">Cortado</span>
-            <span class="menu-item-price">$4.75</span>
+            <span class="menu-item-price">22</span>
           </div>
-          <p class="menu-item-description">Balanced blend of espresso and steamed milk in equal parts.</p>
         </div>
-        <div class="menu-item fade">
+          <div class="menu-item fade">
           <div class="menu-item-header">
-            <span class="menu-item-name">Flat White</span>
-            <span class="menu-item-price">$5.50</span>
+            <span class="menu-item-name">Flatwhite</span>
+            <span class="menu-item-price">22</span>
           </div>
-          <p class="menu-item-description">Espresso with perfectly microfoamed milk for a velvety texture.</p>
         </div>
-        <div class="menu-item fade">
+          <div class="menu-item fade">
           <div class="menu-item-header">
-            <span class="menu-item-name">Mocha</span>
-            <span class="menu-item-price">$5.75</span>
+            <span class="menu-item-name">Cappuccino</span>
+            <span class="menu-item-price">22</span>
           </div>
-          <p class="menu-item-description">Rich chocolate blended with espresso and steamed milk.</p>
+        </div>
+          <div class="menu-item fade">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Americano</span>
+            <span class="menu-item-price"><strong>H</strong> 18/<strong>C</strong> 20</span>
+          </div>
+        </div>
+          <div class="menu-item fade">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Latte</span>
+            <span class="menu-item-price"><strong>H</strong> 22/<strong>C</strong> 25</span>
+          </div>
+        </div>
+          <div class="menu-item fade">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Spanish Latte</span>
+            <span class="menu-item-price"><strong>H</strong> 24/<strong>C</strong> 27</span>
+          </div>
+        </div>
+          <div class="menu-item fade">
+          <div class="menu-item-header">
+            <span class="menu-item-name">People's Signature Iced Shaken</span>
+            <span class="menu-item-price">30</span>
+          </div>
+        </div>
+          <div class="menu-item fade">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Cold Brew</span>
+            <span class="menu-item-price">25</span>
+          </div>
         </div>
       </div>
       <div class="menu-category">
-        <h3 class="fade">Pastries & Bites</h3>
+        <h3 class="fade">MATCHA SERIES</h3>
         <div class="menu-item fade">
           <div class="menu-item-header">
-            <span class="menu-item-name">Croissant</span>
-            <span class="menu-item-price">$4.50</span>
+            <span class="menu-item-name">Matcha Latte</span>
+            <span class="menu-item-price"><strong>H</strong> 28/<strong>C</strong> 30</span>
           </div>
-          <p class="menu-item-description">Butter-laminated French pastry, flaky and golden.</p>
         </div>
         <div class="menu-item fade">
           <div class="menu-item-header">
-            <span class="menu-item-name">Almond Biscotti</span>
-            <span class="menu-item-price">$3.50</span>
+            <span class="menu-item-name">Spanish Matcha</span>
+            <span class="menu-item-price"><strong>H</strong> 30/<strong>C</strong> 32</span>
           </div>
-          <p class="menu-item-description">Twice-baked Italian almond cookies, perfect with espresso.</p>
         </div>
         <div class="menu-item fade">
           <div class="menu-item-header">
-            <span class="menu-item-name">Chocolate Tart</span>
-            <span class="menu-item-price">$5.50</span>
+            <span class="menu-item-name">Cloud Matcha</span>
+            <span class="menu-item-price">35</span>
           </div>
-          <p class="menu-item-description">Silky dark chocolate filling in a delicate pastry shell.</p>
+        </div>
+        <div class="menu-item fade">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Cereal Matcha Latte</span>
+            <span class="menu-item-price">35</span>
+          </div>
+        </div>
+        <div class="menu-item fade">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Salted Vnilla Matcha</span>
+            <span class="menu-item-price">35</span>
+          </div>
+        </div>
+      </div>
+      <div class="menu-category">
+        <h3 class="fade">SMOOTHIES</h3>
+        <div class="menu-item fade">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Acai Smoothie</span>
+            <span class="menu-item-price">35</span>
+          </div>
+        </div>
+        <div class="menu-item fade">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Berry XP</span>
+            <span class="menu-item-price">35</span>
+          </div>
+        </div>
+        <div class="menu-item fade">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Banana XP</span>
+            <span class="menu-item-price">35</span>
+          </div>
+        </div>
+        <div class="menu-item fade">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Green XP</span>
+            <span class="menu-item-price">35</span>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section-container" id="contact">
+<section class="section-container" id="location">
   <div class="section-header">
-    <h2 class="fade">Join the Movement</h2>
-    <p class="fade">Get in touch with us for inquiries, collaborations, or just to say hello.</p>
+    <h2 class="fade">Find Us on the Map</h2>
+    <p class="fade">Can't miss us with this!.</p>
   </div>
   <div class="contact-container">
     <div class="contact-info">
       <div class="info-item fade">
-        <div class="info-label">Email</div>
-        <div class="info-content">hello@pplcafe.com</div>
+        <div class="info-label">Our location</div>
+        <div class="info-content">Ayat Tower, Al Majaz 3</div>
       </div>
       <div class="info-item fade">
-        <div class="info-label">Phone</div>
-        <div class="info-content">+1 (555) 123-4567</div>
+        <div class="info-label">Opening hours</div>
+        <div class="info-content">Mon-Sun · 8am-9pm</div>
       </div>
       <div class="info-item fade">
-        <div class="info-label">Location</div>
-        <div class="info-content">123 Coffee Street, Urban District</div>
+        <div class="info-label">Contact</div>
+        <div class="info-content">@pplcafe · +971 50 123 4567</div>
       </div>
     </div>
-    <form class="contact-form">
-      <div class="form-group fade">
-        <label>Name</label>
-        <input type="text" name="name" required>
-      </div>
-      <div class="form-group fade">
-        <label>Email</label>
-        <input type="email" name="email" required>
-      </div>
-      <div class="form-group fade">
-        <label>Subject</label>
-        <input type="text" name="subject" required>
-      </div>
-      <div class="form-group fade">
-        <label>Message</label>
-        <textarea name="message" required></textarea>
-      </div>
-      <button type="submit" class="submit-btn fade">Send Message</button>
-    </form>
+    <div class="map-frame fade">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3606.110764932556!2d55.37314937533148!3d25.334063926143543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5b00568e284d%3A0x9b5d56e4af8283d2!2sAyat%20Tower!5e0!3m2!1sen!2sae!4v1777766099652!5m2!1sen!2sae" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
   </div>
 </section>
 
 <footer>
   <div class="footer-content">
-    <div class="footer-section">
-      <h4>PPL Cafe</h4>
-      <p>A space for people & coffee — where design meets comfort, and every moment is intentional.</p>
-      <p><strong>Est. 2024</strong></p>
-    </div>
-    <div class="footer-section">
-      <h4>Navigation</h4>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#team">Menu</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-    <div class="footer-section">
-      <h4>Resources</h4>
-      <ul>
-        <li><a href="#">Coffee Guide</a></li>
-        <li><a href="#">Brewing Tips</a></li>
-        <li><a href="#">Bean Stories</a></li>
-        <li><a href="#">Events</a></li>
-      </ul>
-    </div>
-    <div class="footer-section">
-      <h4>Legal</h4>
-      <ul>
-        <li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">Terms of Service</a></li>
-        <li><a href="#">Sustainability</a></li>
-      </ul>
-    </div>
+    <h4>Navigation</h4>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#team">Menu</a></li>
+      <li><a href="#location">Location</a></li>
+    </ul>
   </div>
   <div class="footer-divider">
     © 2026 PPL Cafe. All Rights Reserved.
@@ -770,11 +891,24 @@ navLinks.forEach(link => {
     const targetEl = document.querySelector(targetId);
     if (targetEl) {
       event.preventDefault();
-      targetEl.scrollIntoView({ behavior: 'smooth' });
+      const offsetTop = targetEl.offsetTop - 50;
+      window.scrollTo({ top: offsetTop, behavior: 'smooth' });
       clearHash();
     }
   });
 });
+
+const exploreMenuLink = document.querySelector('.hero a[href="#team"]');
+if (exploreMenuLink) {
+  exploreMenuLink.addEventListener('click', event => {
+    event.preventDefault();
+    const targetEl = document.querySelector('#team');
+    if (targetEl) {
+      const offsetTop = targetEl.offsetTop - 50;
+      window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+    }
+  });
+}
 
 window.addEventListener('load', () => {
   scrollToHero();
@@ -802,8 +936,11 @@ const faders = document.querySelectorAll('.fade');
 const revealFaders = () => {
   faders.forEach(el => {
     const top = el.getBoundingClientRect().top;
-    if(top < window.innerHeight - 100){
+    const bottom = el.getBoundingClientRect().bottom;
+    if(top < window.innerHeight - 100 && bottom > 100){
       el.classList.add('show');
+    } else {
+      el.classList.remove('show');
     }
   });
 };
